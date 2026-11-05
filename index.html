@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,31 +12,32 @@
     <h1>Geohash Viewer</h1>
 
     <label>Geohash
-      <input id="hash" type="text" placeholder="es. u0nd9" autocomplete="off" spellcheck="false">
+      <input id="hash" type="text" placeholder="e.g. u0nd9" autocomplete="off" spellcheck="false">
     </label>
 
-    <label>Precisione: <b id="precLabel">5</b>
-      <input id="precision" type="range" min="1" max="12" value="5">
+    <label>Precision: <b id="precLabel">3</b>
+      <input id="precision" type="range" min="1" max="12" value="3">
     </label>
 
     <div id="info"></div>
 
-    <h2>Vicini</h2>
+    <h2>Neighbours</h2>
     <div id="grid"></div>
-    <p class="hint">Frecce / WASD per muoversi (Q E Z C per le diagonali).<br>
-      Click sulla mappa per selezionare. <kbd>+</kbd>/<kbd>-</kbd> cambia precisione.</p>
+    <p class="hint">Arrows / WASD to move (Q E Z C for diagonals).<br>
+      Click the map to select. <kbd>+</kbd>/<kbd>-</kbd> changes precision.</p>
 
-    <h2>Opzioni</h2>
-    <label class="chk"><input id="showParent" type="checkbox" checked> Mostra padre</label>
-    <label class="chk"><input id="showGrid" type="checkbox"> Griglia nella vista</label>
-    <label class="chk"><input id="follow" type="checkbox" checked> Segui selezione</label>
+    <h2>Options</h2>
+    <label class="chk"><input id="showParent" type="checkbox" checked> Show parent</label>
+    <label class="chk"><input id="showGrid" type="checkbox"> Grid in view</label>
+    <label class="chk"><input id="follow" type="checkbox" checked> Follow selection</label>
 
     <div class="legend">
-      <span><i class="sw sel"></i>selezionata</span>
-      <span><i class="sw same"></i>vicino, stesso padre</span>
-      <span><i class="sw diff"></i>vicino, padre diverso</span>
-      <span><i class="sw par"></i>padre</span>
+      <span><i class="sw sel"></i>selected</span>
+      <span><i class="sw same"></i>neighbour, same parent</span>
+      <span><i class="sw diff"></i>neighbour, different parent</span>
+      <span><i class="sw par"></i>parent</span>
     </div>
+    <footer>by Olly</footer>
   </aside>
   <div id="map"></div>
 

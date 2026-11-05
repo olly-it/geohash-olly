@@ -1,33 +1,37 @@
 # geohash-olly
 
-Visualizzatore di geohash su mappa (HTML + JS, nessuna build). Permette di selezionare una geohash e muoversi tra i limitrofi della stessa precisione, anche quando cambia il padre.
+Geohash viewer on a map (HTML + JS, no build step). Select a geohash and move across its neighbours of the same precision, even when the parent changes.
 
-## Avvio
+## Running
 
-Usa ES modules, quindi va servito via HTTP:
+It uses ES modules, so it must be served over HTTP:
 
 ```sh
 python3 -m http.server 8000
 ```
 
-Poi apri http://localhost:8000 (si può passare una geohash nell'URL, es. `http://localhost:8000/#u0nd9`).
+Then open http://localhost:8000. On startup `u0n` (precision 3) is selected and the map is zoomed to fit the cell; you can pass another geohash in the URL, e.g. `http://localhost:8000/#u0nd9`.
 
-## Funzionalità
+It can also be published as-is with GitHub Pages (Settings → Pages → Deploy from branch `main`, folder `/`).
 
-- Selezione: click sulla mappa (alla precisione corrente) o digitando il codice.
-- Precisione 1–12 tramite slider o tasti `+` / `-`.
-- Gli 8 vicini sono disegnati sulla mappa e in una griglia 3×3 nel pannello:
-  - rosso: selezionata
-  - blu: vicino con lo stesso padre
-  - arancione: vicino con padre diverso (nel pannello è evidenziata la parte di codice che cambia)
-  - tratteggiato: padre
-- Navigazione: frecce / WASD, `Q` `E` `Z` `C` per le diagonali, oppure click su un vicino.
-- Opzione "Griglia nella vista" per vedere tutte le celle della precisione corrente.
-- Gestione antimeridiano (wrap della longitudine); oltre i poli non ci sono vicini.
+## Features
 
-## File
+- Selection: click the map (at the current precision) or type the code.
+- Precision 1–12 via the slider or the `+` / `-` keys.
+- The 8 neighbours are drawn on the map and in a 3×3 grid in the side panel:
+  - red: selected
+  - blue: neighbour with the same parent
+  - orange: neighbour with a different parent (the changing part of the code is highlighted in the panel)
+  - dashed: parent
+- Navigation: arrows / WASD, `Q` `E` `Z` `C` for diagonals, or click a neighbour.
+- "Grid in view" option to show every cell of the current precision.
+- Antimeridian handling (longitude wraps); there are no neighbours beyond the poles.
 
-- [index.html](index.html): layout e caricamento di Leaflet da CDN
-- [app.js](app.js): mappa, rendering, interazione
-- [geohash.js](geohash.js): encode / decode / bounds / vicini
-- [style.css](style.css): stili
+## Files
+
+- [index.html](index.html): layout, loads Leaflet from CDN
+- [app.js](app.js): map, rendering, interaction
+- [geohash.js](geohash.js): encode / decode / bounds / neighbours
+- [style.css](style.css): styles
+
+by Olly

@@ -90,7 +90,7 @@ function render() {
       let i = 0;
       while (i < nb.length && nb[i] === current[i]) i++;
       btn.innerHTML = `${nb.slice(0, i)}<b>${nb.slice(i)}</b>`;
-      btn.title = `${dir.toUpperCase()} — ${sameParent ? 'stesso padre' : 'padre: ' + nb.slice(0, -1)}`;
+      btn.title = `${dir.toUpperCase()} — ${sameParent ? 'same parent' : 'parent: ' + nb.slice(0, -1)}`;
       if (!sameParent) btn.classList.add('diff');
       btn.onclick = () => select(nb);
     }
@@ -100,11 +100,11 @@ function render() {
   const b = gh.bounds(current);
   const sizeKm = cellKm(b);
   $('info').innerHTML = [
-    `padre: ${parent || '(nessuno)'}`,
-    `centro: ${c.lat.toFixed(6)}, ${c.lon.toFixed(6)}`,
+    `parent: ${parent || "(none)"}`,
+    `center: ${c.lat.toFixed(6)}, ${c.lon.toFixed(6)}`,
     `SW: ${b.sw.lat.toFixed(6)}, ${b.sw.lon.toFixed(6)}`,
     `NE: ${b.ne.lat.toFixed(6)}, ${b.ne.lon.toFixed(6)}`,
-    `dim: ~${sizeKm.w} × ${sizeKm.h}`,
+    `size: ~${sizeKm.w} × ${sizeKm.h}`,
   ].join('<br>');
 }
 
@@ -185,5 +185,6 @@ document.addEventListener('keydown', ev => {
 });
 
 // initial state from URL (#u0nd9) or default
-select(location.hash.slice(1) || 'u0nd9', { pan: true });
+select(location.hash.slice(1) || 'u0n', { pan: false });
+if (current) map.fitBounds(L.latLngBounds(llBounds(current)).pad(1.5));
 renderGrid();

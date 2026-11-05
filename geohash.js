@@ -28,7 +28,7 @@ export function bounds(hash) {
   let latMin = -90, latMax = 90, lonMin = -180, lonMax = 180, evenBit = true;
   for (const c of hash) {
     const idx = BASE32.indexOf(c);
-    if (idx < 0) throw new Error(`Carattere non valido: ${c}`);
+    if (idx < 0) throw new Error(`Invalid character: ${c}`);
     for (let n = 4; n >= 0; n--) {
       const b = (idx >> n) & 1;
       if (evenBit) {
